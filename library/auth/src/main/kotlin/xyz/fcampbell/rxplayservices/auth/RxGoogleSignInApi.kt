@@ -44,7 +44,7 @@ class RxGoogleSignInApi(
         }
                 .switchIfEmpty(Observable.error(SignInException("sign-in intent returned was null")))
                 .flatMap { getSignInResultFromIntent(it) }
-                .map { it.signInAccount }
+                .map { it.signInAccount!! }
     }
 
     fun silentSignIn(): Observable<GoogleSignInResult> {

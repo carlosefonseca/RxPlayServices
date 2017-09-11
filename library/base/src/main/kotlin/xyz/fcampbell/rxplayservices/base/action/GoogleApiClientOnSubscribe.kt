@@ -26,8 +26,8 @@ import xyz.fcampbell.rxplayservices.base.util.ResultActivity
 internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
         private val apiClientDescriptor: ApiClientDescriptor,
         private val apiDescriptor: ApiDescriptor<A, O>
-) : ObservableOnSubscribe<Pair<GoogleApiClient, Bundle?>> {
-    override fun subscribe(emitter: ObservableEmitter<Pair<GoogleApiClient, Bundle?>>) {
+) : ObservableOnSubscribe<Pair<GoogleApiClient, Bundle>> {
+    override fun subscribe(emitter: ObservableEmitter<Pair<GoogleApiClient, Bundle>>) {
         val apiClient = createApiClient(emitter)
 
         emitter.setCancellable {
@@ -43,7 +43,7 @@ internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
         }
     }
 
-    private fun createApiClient(emitter: ObservableEmitter<in Pair<GoogleApiClient, Bundle?>>): GoogleApiClient {
+    private fun createApiClient(emitter: ObservableEmitter<in Pair<GoogleApiClient, Bundle>>): GoogleApiClient {
         val apiClientConnectionCallbacks = ApiClientConnectionCallbacks(emitter)
 
         val apiClient = GoogleApiClient.Builder(
@@ -104,7 +104,7 @@ internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
     }
 
     private inner class ApiClientConnectionCallbacks(
-            private val emitter: ObservableEmitter<in Pair<GoogleApiClient, Bundle?>>
+            private val emitter: ObservableEmitter<in Pair<GoogleApiClient, Bundle>>
     ) : GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
@@ -112,7 +112,7 @@ internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
 
         override fun onConnected(bundle: Bundle?) {
             try {
-                emitter.onNext(apiClient to bundle)
+                emitter.onNext(apiClient to (bundle ?: Bundle()))
                 //don't call onCompleted, we don't want the client to disconnect unless we explicitly unsubscribe
             } catch (ex: Throwable) {
                 emitter.tryOnError(ex)

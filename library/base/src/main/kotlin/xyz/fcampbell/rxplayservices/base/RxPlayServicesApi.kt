@@ -42,7 +42,7 @@ abstract class RxPlayServicesApi<out A, O : Api.ApiOptions>(
     /**
      * The [Bundle] that was passed to [onConnected(Bundle)] when the [GoogleApiClient] was connected.
      */
-    val bundle: Observable<Bundle?>
+    val bundle: Observable<Bundle>
         get() = apiClientPair.map { it.second }
 
     /**
@@ -53,7 +53,7 @@ abstract class RxPlayServicesApi<out A, O : Api.ApiOptions>(
         apiClientPair = newClientObservable() //create a new Observable to start fresh
     }
 
-    private fun newClientObservable(): Observable<Pair<GoogleApiClient, Bundle?>> {
+    private fun newClientObservable(): Observable<Pair<GoogleApiClient, Bundle>> {
         return Observable.create(googleApiClientOnSubscribe)
                 .doOnSubscribe {
                     Log.d(TAG, "Sub to main apiClient")
