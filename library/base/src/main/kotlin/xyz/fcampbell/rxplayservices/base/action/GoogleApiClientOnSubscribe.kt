@@ -115,12 +115,12 @@ internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
                 emitter.onNext(apiClient to bundle)
                 //don't call onCompleted, we don't want the client to disconnect unless we explicitly unsubscribe
             } catch (ex: Throwable) {
-                emitter.onError(ex)
+                emitter.tryOnError(ex)
             }
         }
 
         override fun onConnectionSuspended(cause: Int) {
-            emitter.onError(GoogleApiConnectionSuspendedException(cause))
+            emitter.tryOnError(GoogleApiConnectionSuspendedException(cause))
         }
 
         override fun onConnectionFailed(connectionResult: ConnectionResult) {
@@ -128,7 +128,7 @@ internal class GoogleApiClientOnSubscribe<A, O : Api.ApiOptions>(
                 ResultActivity.getResult(apiClientDescriptor.context, connectionResult.resolution!!.intentSender)
                         .subscribe({}, {}, { apiClient.connect() })
             } else {
-                emitter.onError(GoogleApiConnectionException(connectionResult, "Error connecting to GoogleApiClient"))
+                emitter.tryOnError(GoogleApiConnectionException(connectionResult, "Error connecting to GoogleApiClient"))
             }
         }
     }

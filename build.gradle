@@ -19,7 +19,7 @@ ext {
     buildToolsVersion = "24.0.2"
 
     vGooglePlayServices = '10.0.1'
-    vRxJava = '2.0.4'
+    vRxJava = '2.1.1'
 
     vTestSupportLib = '0.5'
 }
