@@ -27,7 +27,7 @@ ext {
 buildscript {
     ext {
         vAndroidGradlePlugin = '2.2.3'
-        vKotlin = '1.0.6'
+        vKotlin = '1.1.4-3'
 
         vDokkaPlugin = '0.9.13'
         vAndroidMavenGradlePlugin = '1.5'
