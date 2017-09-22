@@ -3,15 +3,15 @@
 // To avoid manually setting the same values in all Android modules, set the value on the root
 // project and then reference this from the modules
 ext {
-    githubUrl = 'https://github.com/francoiscampbell/RxPlayServices'
+    githubUrl = 'https://github.com/carlosefonseca/RxPlayServices'
     gitUrl = "${githubUrl}.git"
     gitTag = "v$version"
 
     projectFriendlyName = 'RxPlayServices'
     projectDescription = 'Library that wraps Google Play services APIs using RxJava'
 
-    groupId = 'xyz.fcampbell.rxplayservices'
-    versionName = '0.5.0'
+    groupId = 'com.carlosefonseca.rxplayservices'
+    versionName = '0.5.0.3'
 
     minSdkVersion = 11
     compileSdkVersion = 24
