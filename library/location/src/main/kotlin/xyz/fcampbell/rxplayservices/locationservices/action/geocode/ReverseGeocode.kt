@@ -31,12 +31,12 @@ internal class ReverseGeocode(
                         .subscribe({
                             emitter.onNext(it)
                         }, {
-                            emitter.onError(it)
+                            emitter.tryOnError(it)
                         }, {
                             emitter.onComplete()
                         })
             } else {
-                emitter.onError(e)
+                emitter.tryOnError(e)
             }
         }
 

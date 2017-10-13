@@ -11,7 +11,7 @@ ext {
     projectDescription = 'Library that wraps Google Play services APIs using RxJava'
 
     groupId = 'com.carlosefonseca.rxplayservices'
-    versionName = '0.5.0.3'
+    versionName = '0.5.0.4'
 
     minSdkVersion = 11
     compileSdkVersion = 24
@@ -27,7 +27,7 @@ ext {
 buildscript {
     ext {
         vAndroidGradlePlugin = '2.2.3'
-        vKotlin = '1.1.4-3'
+        vKotlin = '1.1.51'
 
         vDokkaPlugin = '0.9.13'
         vAndroidMavenGradlePlugin = '1.5'
