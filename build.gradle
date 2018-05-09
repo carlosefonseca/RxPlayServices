@@ -11,31 +11,31 @@ ext {
     projectDescription = 'Library that wraps Google Play services APIs using RxJava'
 
     groupId = 'com.carlosefonseca.rxplayservices'
-    versionName = '0.5.0.4'
+    versionName = '0.5.0.5'
 
     minSdkVersion = 11
     compileSdkVersion = 24
     targetSdkVersion = 24
-    buildToolsVersion = "24.0.2"
 
-    vGooglePlayServices = '10.0.1'
-    vRxJava = '2.1.1'
+    vGooglePlayServices = '11.0.4'
+    vRxJava = '2.1.13'
 
     vTestSupportLib = '0.5'
 }
 
 buildscript {
     ext {
-        vAndroidGradlePlugin = '2.2.3'
-        vKotlin = '1.1.51'
+        vAndroidGradlePlugin = '3.1.2'
+        vKotlin = '1.2.41'
 
-        vDokkaPlugin = '0.9.13'
+        vDokkaPlugin = '0.9.15'
         vAndroidMavenGradlePlugin = '1.5'
         vGradleBintrayPlugin = '1.7.3'
 
         vDexcount = '0.6.2'
     }
     repositories {
+        google()
         mavenCentral()
         jcenter()
     }
@@ -62,11 +62,12 @@ allprojects {
     group = rootProject.ext.groupId
 
     repositories {
+        google()
         mavenCentral()
         jcenter()
     }
 }
 
 task wrapper(type: Wrapper) {
-    distributionUrl = "https://services.gradle.org/distributions/gradle-2.14.1-all.zip"
+    distributionUrl = "https://services.gradle.org/distributions/gradle-4.4-all.zip"
 }
